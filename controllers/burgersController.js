@@ -18,12 +18,9 @@ router.get("/burgers", function(req, res) {
 // post route -> back to index
   //hint: burger.create
 router.post("/burgers/create", function(req, res) {
-  burger.create([
-    "burger_name", "devoured"
-  ], [
-    req.body.name, 0
-  ], function(result) {
-    res.json({ id: result.insertId });
+  burger.create(req.body.burger_name, function(result) {
+    console.log(result);
+    res.redirect("/");
   });
 });
 

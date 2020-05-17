@@ -7,11 +7,10 @@ var burger = {
       cb(res);
     });
   },
-  create: function(burger_name, devoured, cb) {
+  create: function(name, cb) {
     //hint:orm.create()
-    orm.create("burgers", burger_name, devoured, function(res) {
-      cb(res);
-    });
+    orm.create("burgers", ["burger_name", "devoured"], [name, false], cb
+    );
   },
   update: function(id, cb) {
     var condition = "id=" + id;
