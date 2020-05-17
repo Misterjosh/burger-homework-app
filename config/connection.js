@@ -1,13 +1,18 @@
 var mysql = require("mysql");
+var connection;
 
 //1)create connection object
-var connection = mysql.createConnection({
-    host: "pqxt96p7ysz6rn1f.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+if (process.env.JAWSDB_URL) {
+    connection = mysql.createConnection(process.env.JAWSDB_URL);
+} else {
+connection = mysql.createConnection({
+    host: "localhost",
     port: 3306,
-    user: "v3f7xio2vshoxux5",
-    password: "proii5vb21hwrb9b",
-    database: "owfhlxqo28cb1k00"
-})
+    user: "root",
+    password: "pw10Mysql",
+    database: "burgers_db"
+});
+};
 
 //2)connect
 connection.connect(function(err){
